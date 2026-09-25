@@ -9,5 +9,5 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Keep the public site as a single immersive storytelling page; this preserves the selected Caiman-inspired vertical experience.
+- Keep the home page immersive, with separate Concepts and Capela São José routes; this preserves storytelling while making project content shareable.
 - Treat project facts, location, contact details, and visit schedules as provisional until the client supplies them; this prevents invented business information.
