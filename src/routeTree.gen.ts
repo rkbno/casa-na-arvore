@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CapelaRouteImport } from './routes/capela'
+import { Route as ConceitosRouteImport } from './routes/conceitos'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CapelaRoute = CapelaRouteImport.update({
+  id: '/capela',
+  path: '/capela',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConceitosRoute = ConceitosRouteImport.update({
+  id: '/conceitos',
+  path: '/conceitos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/capela': typeof CapelaRoute
+  '/conceitos': typeof ConceitosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/capela': typeof CapelaRoute
+  '/conceitos': typeof ConceitosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/capela': typeof CapelaRoute
+  '/conceitos': typeof ConceitosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/capela' | '/conceitos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/capela' | '/conceitos'
+  id: '__root__' | '/' | '/capela' | '/conceitos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CapelaRoute: typeof CapelaRoute
+  ConceitosRoute: typeof ConceitosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/capela': {
+      id: '/capela'
+      path: '/capela'
+      fullPath: '/capela'
+      preLoaderRoute: typeof CapelaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conceitos': {
+      id: '/conceitos'
+      path: '/conceitos'
+      fullPath: '/conceitos'
+      preLoaderRoute: typeof ConceitosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CapelaRoute: CapelaRoute,
+  ConceitosRoute: ConceitosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
