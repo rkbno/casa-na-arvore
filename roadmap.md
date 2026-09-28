@@ -4,3 +4,7 @@
 - [x] Add the Concepts and Capela São José pages with route-specific metadata.
 - [x] Use the uploaded logo, floor plan, and real Capela São José photographs.
 - [x] Validate the complete site on desktop and mobile.
+- [x] Enhance the Capela São José images and replace the originals shown on the site.
+- [ ] Add a contact page where clients can request a quote with project type, location, and desired timeline.
+- [ ] Store and validate quote requests securely.
+- [ ] Validate the contact flow on desktop and mobile.
