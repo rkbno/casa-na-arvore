@@ -11,3 +11,4 @@
 
 - Keep the home page immersive, with separate Concepts and Capela São José routes; this preserves storytelling while making project content shareable.
 - Treat project facts, location, contact details, and visit schedules as provisional until the client supplies them; this prevents invented business information.
+- Store public quote requests through a validated server function into a server-only table; this keeps client submissions useful without exposing customer details.
