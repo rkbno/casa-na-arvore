@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CapelaRouteImport } from './routes/capela'
 import { Route as ConceitosRouteImport } from './routes/conceitos'
+import { Route as ContatoRouteImport } from './routes/contato'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const ConceitosRoute = ConceitosRouteImport.update({
   path: '/conceitos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/capela': typeof CapelaRoute
   '/conceitos': typeof ConceitosRoute
+  '/contato': typeof ContatoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/capela': typeof CapelaRoute
   '/conceitos': typeof ConceitosRoute
+  '/contato': typeof ContatoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/capela': typeof CapelaRoute
   '/conceitos': typeof ConceitosRoute
+  '/contato': typeof ContatoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/capela' | '/conceitos'
+  fullPaths: '/' | '/capela' | '/conceitos' | '/contato'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/capela' | '/conceitos'
-  id: '__root__' | '/' | '/capela' | '/conceitos'
+  to: '/' | '/capela' | '/conceitos' | '/contato'
+  id: '__root__' | '/' | '/capela' | '/conceitos' | '/contato'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CapelaRoute: typeof CapelaRoute
   ConceitosRoute: typeof ConceitosRoute
+  ContatoRoute: typeof ContatoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConceitosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CapelaRoute: CapelaRoute,
   ConceitosRoute: ConceitosRoute,
+  ContatoRoute: ContatoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
