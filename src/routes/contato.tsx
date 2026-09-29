@@ -119,6 +119,7 @@ function ContactPage() {
                   <Field label="Nome" error={form.formState.errors.name?.message}>
                     <Input
                       {...form.register("name")}
+                      aria-label="Nome"
                       className={fieldClassName}
                       autoComplete="name"
                       maxLength={100}
@@ -127,6 +128,7 @@ function ContactPage() {
                   <Field label="E-mail" error={form.formState.errors.email?.message}>
                     <Input
                       {...form.register("email")}
+                      aria-label="E-mail"
                       type="email"
                       className={fieldClassName}
                       autoComplete="email"
@@ -139,6 +141,7 @@ function ContactPage() {
                   <Field label="Telefone (opcional)" error={form.formState.errors.phone?.message}>
                     <Input
                       {...form.register("phone")}
+                      aria-label="Telefone (opcional)"
                       type="tel"
                       className={fieldClassName}
                       autoComplete="tel"
@@ -152,7 +155,7 @@ function ContactPage() {
                         form.setValue("projectType", value, { shouldValidate: true })
                       }
                     >
-                      <SelectTrigger className={fieldClassName}>
+                      <SelectTrigger className={fieldClassName} aria-label="Tipo de projeto">
                         <SelectValue placeholder="Selecione" />
                       </SelectTrigger>
                       <SelectContent>
@@ -171,6 +174,7 @@ function ContactPage() {
                   <Field label="Localização" error={form.formState.errors.location?.message}>
                     <Input
                       {...form.register("location")}
+                      aria-label="Localização"
                       className={fieldClassName}
                       placeholder="Cidade e estado"
                       maxLength={160}
@@ -186,7 +190,7 @@ function ContactPage() {
                         form.setValue("desiredTimeline", value, { shouldValidate: true })
                       }
                     >
-                      <SelectTrigger className={fieldClassName}>
+                      <SelectTrigger className={fieldClassName} aria-label="Prazo desejado">
                         <SelectValue placeholder="Selecione" />
                       </SelectTrigger>
                       <SelectContent>
@@ -203,6 +207,7 @@ function ContactPage() {
                 <Field label="Conte um pouco mais (opcional)" error={form.formState.errors.details?.message}>
                   <Textarea
                     {...form.register("details")}
+                    aria-label="Conte um pouco mais (opcional)"
                     className="min-h-32 rounded-lg bg-background/70 px-4 py-3 shadow-none"
                     maxLength={1500}
                     placeholder="Área aproximada, necessidades e outras informações importantes"
