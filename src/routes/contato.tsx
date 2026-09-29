@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -44,15 +45,14 @@ const fieldClassName = "h-12 rounded-lg bg-background/70 px-4 shadow-none";
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const sendQuoteRequest = useServerFn(submitQuoteRequest);
   const form = useForm<QuoteRequestInput>({
     resolver: zodResolver(quoteRequestSchema),
     defaultValues: {
       name: "",
       email: "",
       phone: "",
-      projectType: undefined,
       location: "",
-      desiredTimeline: undefined,
       details: "",
       website: "",
     },
@@ -60,7 +60,7 @@ function ContactPage() {
 
   const onSubmit = form.handleSubmit(async (values) => {
     try {
-      await submitQuoteRequest({ data: values });
+      await sendQuoteRequest({ data: values });
       form.reset();
       setSent(true);
     } catch {
@@ -239,7 +239,7 @@ function Field({
   children,
 }: {
   label: string;
-  error?: string;
+  error: string | undefined;
   children: React.ReactNode;
 }) {
   return (
