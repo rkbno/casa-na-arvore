@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CapelaRouteImport } from './routes/capela'
 import { Route as ConceitosRouteImport } from './routes/conceitos'
 import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as SobreRouteImport } from './routes/sobre'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const ContatoRoute = ContatoRouteImport.update({
   path: '/contato',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/capela': typeof CapelaRoute
   '/conceitos': typeof ConceitosRoute
   '/contato': typeof ContatoRoute
+  '/sobre': typeof SobreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/capela': typeof CapelaRoute
   '/conceitos': typeof ConceitosRoute
   '/contato': typeof ContatoRoute
+  '/sobre': typeof SobreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/capela': typeof CapelaRoute
   '/conceitos': typeof ConceitosRoute
   '/contato': typeof ContatoRoute
+  '/sobre': typeof SobreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/capela' | '/conceitos' | '/contato'
+  fullPaths: '/' | '/capela' | '/conceitos' | '/contato' | '/sobre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/capela' | '/conceitos' | '/contato'
-  id: '__root__' | '/' | '/capela' | '/conceitos' | '/contato'
+  to: '/' | '/capela' | '/conceitos' | '/contato' | '/sobre'
+  id: '__root__' | '/' | '/capela' | '/conceitos' | '/contato' | '/sobre'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   CapelaRoute: typeof CapelaRoute
   ConceitosRoute: typeof ConceitosRoute
   ContatoRoute: typeof ContatoRoute
+  SobreRoute: typeof SobreRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContatoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   CapelaRoute: CapelaRoute,
   ConceitosRoute: ConceitosRoute,
   ContatoRoute: ContatoRoute,
+  SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
