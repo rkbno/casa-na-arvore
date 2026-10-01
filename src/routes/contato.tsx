@@ -43,8 +43,43 @@ export const Route = createFileRoute("/contato")({
 
 const fieldClassName = "h-12 rounded-lg bg-background/70 px-4 shadow-none";
 
+const WHATSAPP_NUMBER = "5527992995445";
+
+const projectTypeLabels: Record<QuoteRequestInput["projectType"], string> = {
+  residencial: "Residencial",
+  comercial: "Comercial",
+  institucional: "Institucional",
+  reforma: "Reforma",
+  bioconstrucao: "Bioconstrução",
+  outro: "Outro",
+};
+
+const timelineLabels: Record<QuoteRequestInput["desiredTimeline"], string> = {
+  "ate-3-meses": "Até 3 meses",
+  "3-a-6-meses": "De 3 a 6 meses",
+  "6-a-12-meses": "De 6 a 12 meses",
+  "mais-de-12-meses": "Mais de 12 meses",
+  "a-definir": "A definir",
+};
+
+function buildWhatsAppUrl(values: QuoteRequestInput): string {
+  const lines = [
+    "Olá! Gostaria de solicitar um orçamento.",
+    "",
+    `Nome: ${values.name}`,
+    `E-mail: ${values.email}`,
+    values.phone ? `Telefone: ${values.phone}` : null,
+    `Tipo de projeto: ${projectTypeLabels[values.projectType]}`,
+    `Localização: ${values.location}`,
+    `Prazo desejado: ${timelineLabels[values.desiredTimeline]}`,
+    values.details ? `Detalhes: ${values.details}` : null,
+  ].filter((line): line is string => line !== null);
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
+}
+
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [whatsAppUrl, setWhatsAppUrl] = useState<string | null>(null);
   const sendQuoteRequest = useServerFn(submitQuoteRequest);
   const form = useForm<QuoteRequestInput>({
     resolver: zodResolver(quoteRequestSchema),
