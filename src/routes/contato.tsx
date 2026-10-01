@@ -148,11 +148,14 @@ function ContactPage() {
                   — é só confirmar o envio por lá para falar diretamente com a equipe.
                 </p>
                 {whatsAppUrl && (
-                  <Button className="mt-8" asChild>
-                    <a href={whatsAppUrl} target="_blank" rel="noopener noreferrer">
-                      Continuar no WhatsApp
-                    </a>
-                  </Button>
+                  <a
+                    href={whatsAppUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                  >
+                    Continuar no WhatsApp
+                  </a>
                 )}
                 <Button
                   variant="outline"
