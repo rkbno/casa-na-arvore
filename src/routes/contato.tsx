@@ -43,8 +43,43 @@ export const Route = createFileRoute("/contato")({
 
 const fieldClassName = "h-12 rounded-lg bg-background/70 px-4 shadow-none";
 
+const WHATSAPP_NUMBER = "5527992995445";
+
+const projectTypeLabels: Record<QuoteRequestInput["projectType"], string> = {
+  residencial: "Residencial",
+  comercial: "Comercial",
+  institucional: "Institucional",
+  reforma: "Reforma",
+  bioconstrucao: "Bioconstrução",
+  outro: "Outro",
+};
+
+const timelineLabels: Record<QuoteRequestInput["desiredTimeline"], string> = {
+  "ate-3-meses": "Até 3 meses",
+  "3-a-6-meses": "De 3 a 6 meses",
+  "6-a-12-meses": "De 6 a 12 meses",
+  "mais-de-12-meses": "Mais de 12 meses",
+  "a-definir": "A definir",
+};
+
+function buildWhatsAppUrl(values: QuoteRequestInput): string {
+  const lines = [
+    "Olá! Gostaria de solicitar um orçamento.",
+    "",
+    `Nome: ${values.name}`,
+    `E-mail: ${values.email}`,
+    values.phone ? `Telefone: ${values.phone}` : null,
+    `Tipo de projeto: ${projectTypeLabels[values.projectType]}`,
+    `Localização: ${values.location}`,
+    `Prazo desejado: ${timelineLabels[values.desiredTimeline]}`,
+    values.details ? `Detalhes: ${values.details}` : null,
+  ].filter((line): line is string => line !== null);
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
+}
+
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [whatsAppUrl, setWhatsAppUrl] = useState<string | null>(null);
   const sendQuoteRequest = useServerFn(submitQuoteRequest);
   const form = useForm<QuoteRequestInput>({
     resolver: zodResolver(quoteRequestSchema),
@@ -61,6 +96,9 @@ function ContactPage() {
   const onSubmit = form.handleSubmit(async (values) => {
     try {
       await sendQuoteRequest({ data: values });
+      const url = buildWhatsAppUrl(values);
+      setWhatsAppUrl(url);
+      window.open(url, "_blank", "noopener,noreferrer");
       form.reset();
       setSent(true);
     } catch {
@@ -106,10 +144,27 @@ function ContactPage() {
                 <CheckCircle2 className="size-12 text-primary" />
                 <h2 className="mt-6 font-display text-4xl font-bold">Solicitação enviada</h2>
                 <p className="mt-4 max-w-md leading-relaxed text-foreground/70">
-                  Obrigado por compartilhar seu projeto. Suas informações foram recebidas com
-                  sucesso.
+                  Obrigado por compartilhar seu projeto. Abrimos o WhatsApp com sua mensagem pronta
+                  — é só confirmar o envio por lá para falar diretamente com a equipe.
                 </p>
-                <Button className="mt-8" onClick={() => setSent(false)}>
+                {whatsAppUrl && (
+                  <a
+                    href={whatsAppUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                  >
+                    Continuar no WhatsApp
+                  </a>
+                )}
+                <Button
+                  variant="outline"
+                  className="mt-3"
+                  onClick={() => {
+                    setWhatsAppUrl(null);
+                    setSent(false);
+                  }}
+                >
                   Enviar outra solicitação
                 </Button>
               </div>
