@@ -96,6 +96,9 @@ function ContactPage() {
   const onSubmit = form.handleSubmit(async (values) => {
     try {
       await sendQuoteRequest({ data: values });
+      const url = buildWhatsAppUrl(values);
+      setWhatsAppUrl(url);
+      window.open(url, "_blank", "noopener,noreferrer");
       form.reset();
       setSent(true);
     } catch {
@@ -141,10 +144,24 @@ function ContactPage() {
                 <CheckCircle2 className="size-12 text-primary" />
                 <h2 className="mt-6 font-display text-4xl font-bold">Solicitação enviada</h2>
                 <p className="mt-4 max-w-md leading-relaxed text-foreground/70">
-                  Obrigado por compartilhar seu projeto. Suas informações foram recebidas com
-                  sucesso.
+                  Obrigado por compartilhar seu projeto. Abrimos o WhatsApp com sua mensagem pronta
+                  — é só confirmar o envio por lá para falar diretamente com a equipe.
                 </p>
-                <Button className="mt-8" onClick={() => setSent(false)}>
+                {whatsAppUrl && (
+                  <Button className="mt-8" asChild>
+                    <a href={whatsAppUrl} target="_blank" rel="noopener noreferrer">
+                      Continuar no WhatsApp
+                    </a>
+                  </Button>
+                )}
+                <Button
+                  variant="outline"
+                  className="mt-3"
+                  onClick={() => {
+                    setWhatsAppUrl(null);
+                    setSent(false);
+                  }}
+                >
                   Enviar outra solicitação
                 </Button>
               </div>
