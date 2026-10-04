@@ -8,6 +8,6 @@
 - [x] Add a contact page where clients can request a quote with project type, location, and desired timeline.
 - [x] Store and validate quote requests securely.
 - [x] Validate the contact flow on desktop and mobile.
-- [ ] Add an AI-guided bioclimatic concept tool for visitor terrain and treehouse descriptions.
-- [ ] Connect the tool to Lovable AI Gateway with server-side validation and safe error handling.
-- [ ] Validate the generated guidance flow on desktop and mobile.
+- [x] Add an AI-guided bioclimatic concept tool for visitor terrain and treehouse descriptions.
+- [x] Connect the tool to Lovable AI Gateway with server-side validation and safe error handling.
+- [x] Validate the generated guidance flow on desktop and mobile.
