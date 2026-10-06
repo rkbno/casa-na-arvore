@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CapelaRouteImport } from './routes/capela'
+import { Route as CasaTempoRouteImport } from './routes/casa-tempo'
 import { Route as ConceitosRouteImport } from './routes/conceitos'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as OrientacaoRouteImport } from './routes/orientacao'
@@ -24,6 +25,11 @@ const IndexRoute = IndexRouteImport.update({
 const CapelaRoute = CapelaRouteImport.update({
   id: '/capela',
   path: '/capela',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasaTempoRoute = CasaTempoRouteImport.update({
+  id: '/casa-tempo',
+  path: '/casa-tempo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConceitosRoute = ConceitosRouteImport.update({
@@ -50,6 +56,7 @@ const SobreRoute = SobreRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/capela': typeof CapelaRoute
+  '/casa-tempo': typeof CasaTempoRoute
   '/conceitos': typeof ConceitosRoute
   '/contato': typeof ContatoRoute
   '/orientacao': typeof OrientacaoRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/capela': typeof CapelaRoute
+  '/casa-tempo': typeof CasaTempoRoute
   '/conceitos': typeof ConceitosRoute
   '/contato': typeof ContatoRoute
   '/orientacao': typeof OrientacaoRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/capela': typeof CapelaRoute
+  '/casa-tempo': typeof CasaTempoRoute
   '/conceitos': typeof ConceitosRoute
   '/contato': typeof ContatoRoute
   '/orientacao': typeof OrientacaoRoute
@@ -75,13 +84,27 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/capela' | '/conceitos' | '/contato' | '/orientacao' | '/sobre'
+    | '/'
+    | '/capela'
+    | '/casa-tempo'
+    | '/conceitos'
+    | '/contato'
+    | '/orientacao'
+    | '/sobre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/capela' | '/conceitos' | '/contato' | '/orientacao' | '/sobre'
+  to:
+    | '/'
+    | '/capela'
+    | '/casa-tempo'
+    | '/conceitos'
+    | '/contato'
+    | '/orientacao'
+    | '/sobre'
   id:
     | '__root__'
     | '/'
     | '/capela'
+    | '/casa-tempo'
     | '/conceitos'
     | '/contato'
     | '/orientacao'
@@ -91,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CapelaRoute: typeof CapelaRoute
+  CasaTempoRoute: typeof CasaTempoRoute
   ConceitosRoute: typeof ConceitosRoute
   ContatoRoute: typeof ContatoRoute
   OrientacaoRoute: typeof OrientacaoRoute
@@ -111,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/capela'
       fullPath: '/capela'
       preLoaderRoute: typeof CapelaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/casa-tempo': {
+      id: '/casa-tempo'
+      path: '/casa-tempo'
+      fullPath: '/casa-tempo'
+      preLoaderRoute: typeof CasaTempoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/conceitos': {
@@ -147,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CapelaRoute: CapelaRoute,
+  CasaTempoRoute: CasaTempoRoute,
   ConceitosRoute: ConceitosRoute,
   ContatoRoute: ContatoRoute,
   OrientacaoRoute: OrientacaoRoute,
