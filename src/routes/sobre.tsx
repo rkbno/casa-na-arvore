@@ -7,9 +7,17 @@ export const Route = createFileRoute("/sobre")({
   head: () => ({
     meta: [
       { title: "Sobre Luisa Dalcin — Casa na Árvore" },
-      { name: "description", content: "A trajetória de Luisa Dalcin, projetista e idealizadora da Casa na Árvore: das raízes no desenho à atuação em BIM e bioconstrução." },
+      {
+        name: "description",
+        content:
+          "A trajetória de Luisa Dalcin, projetista e idealizadora da Casa na Árvore: das raízes no desenho à atuação em BIM e bioconstrução.",
+      },
       { property: "og:title", content: "Sobre Luisa Dalcin — Casa na Árvore" },
-      { property: "og:description", content: "Da arte ao projeto: raízes, trajetória internacional em BIM, bioconstrução e o propósito da Casa na Árvore." },
+      {
+        property: "og:description",
+        content:
+          "Da arte ao projeto: raízes, trajetória internacional em BIM, bioconstrução e o propósito da Casa na Árvore.",
+      },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -84,7 +92,9 @@ function AboutPage() {
           </Link>
           <div className="grid items-end gap-12 py-20 md:grid-cols-2">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-clay">Portfólio · Projetista</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-clay">
+                Portfólio · Projetista
+              </p>
               <h1 className="mt-5 font-display text-6xl font-extrabold leading-[0.95] md:text-8xl">
                 Luisa
                 <br />
@@ -109,13 +119,16 @@ function AboutPage() {
       <main>
         <section className="px-6 py-24 md:px-12 md:py-32">
           <div className="mx-auto max-w-5xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">De onde vêm as minhas raízes</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              De onde vêm as minhas raízes
+            </p>
             <h2 className="mt-4 font-display text-4xl font-bold leading-tight md:text-5xl">
               Naquele momento, eu ainda não sabia até onde esse caminho me levaria.
             </h2>
             <p className="mt-6 font-light leading-relaxed text-foreground/70">
-              Mas foi ali que começaram a se formar as raízes da profissional que estou construindo hoje — entre o
-              desenho à mão, o detalhamento técnico e a vontade de ver uma ideia se tornar espaço.
+              Mas foi ali que começaram a se formar as raízes da profissional que estou construindo
+              hoje — entre o desenho à mão, o detalhamento técnico e a vontade de ver uma ideia se
+              tornar espaço.
             </p>
           </div>
         </section>
@@ -126,15 +139,23 @@ function AboutPage() {
             <h2 className="mt-4 font-display text-5xl font-bold">Um caminho em construção</h2>
             <div className="mt-14 space-y-px overflow-hidden rounded-3xl bg-primary-foreground/15">
               {timeline.map((item) => (
-                <article key={item.title} className="grid gap-6 bg-pine p-8 md:grid-cols-[10rem_1fr] md:p-12">
+                <article
+                  key={item.title}
+                  className="grid gap-6 bg-pine p-8 md:grid-cols-[10rem_1fr] md:p-12"
+                >
                   <div>
                     <p className="font-display text-3xl font-bold text-clay">{item.year}</p>
-                    <p className="mt-2 text-xs uppercase tracking-[0.18em] text-primary-foreground/55">{item.place}</p>
+                    <p className="mt-2 text-xs uppercase tracking-[0.18em] text-primary-foreground/55">
+                      {item.place}
+                    </p>
                   </div>
                   <div>
                     <h3 className="font-display text-2xl font-bold md:text-3xl">{item.title}</h3>
                     {item.body.map((paragraph) => (
-                      <p key={paragraph} className="mt-4 font-light leading-relaxed text-primary-foreground/70">
+                      <p
+                        key={paragraph}
+                        className="mt-4 font-light leading-relaxed text-primary-foreground/70"
+                      >
                         {paragraph}
                       </p>
                     ))}
@@ -148,26 +169,36 @@ function AboutPage() {
         <section className="px-6 py-24 md:px-12 md:py-32">
           <div className="mx-auto grid max-w-7xl items-start gap-14 md:grid-cols-2">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Casa na Árvore · Projeto autoral</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Casa na Árvore · Projeto autoral
+              </p>
               <h2 className="mt-4 font-display text-4xl font-bold leading-tight md:text-5xl">
                 A marca que reúne tudo o que quero projetar
               </h2>
               <p className="mt-6 font-light leading-relaxed text-foreground/70">
-                A Casa na Árvore é um projeto autoral em desenvolvimento, criado como parte da construção da minha
-                trajetória profissional na arquitetura. A marca reúne meus principais interesses de atuação —
-                arquitetura residencial, casas de campo, interiores, bioarquitetura e conforto ambiental.
+                A Casa na Árvore é um projeto autoral em desenvolvimento, criado como parte da
+                construção da minha trajetória profissional na arquitetura. A marca reúne meus
+                principais interesses de atuação — arquitetura residencial, casas de campo,
+                interiores, bioarquitetura e conforto ambiental.
               </p>
               <p className="mt-4 font-light leading-relaxed text-foreground/70">
-                Um projeto autoral em construção, que acompanha minha evolução como projetista e futura arquiteta.
+                Um projeto autoral em construção, que acompanha minha evolução como projetista e
+                futura arquiteta.
               </p>
             </div>
             <div className="rounded-3xl border border-border p-8 md:p-12">
-              <img src={logo.url} alt="Casa na Árvore Arquitetura" className="h-24 w-auto rounded-full" />
-              <p className="mt-10 text-xs font-semibold uppercase tracking-[0.2em] text-primary">Propósito</p>
+              <img
+                src={logo.url}
+                alt="Casa na Árvore Arquitetura"
+                className="h-24 w-auto rounded-full"
+              />
+              <p className="mt-10 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Propósito
+              </p>
               <p className="mt-4 font-light leading-relaxed text-foreground/70">
-                Vejo o meu trabalho como um dom que deve ser desenvolvido com responsabilidade, excelência e serviço.
-                Construir minha trajetória profissional também significa honrar meus princípios e colocar meus talentos
-                a serviço das pessoas.
+                Vejo o meu trabalho como um dom que deve ser desenvolvido com responsabilidade,
+                excelência e serviço. Construir minha trajetória profissional também significa
+                honrar meus princípios e colocar meus talentos a serviço das pessoas.
               </p>
             </div>
           </div>
@@ -175,8 +206,12 @@ function AboutPage() {
 
         <section className="bg-sage/15 px-6 py-24 md:px-12 md:py-32">
           <div className="mx-auto max-w-7xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Áreas de atuação</p>
-            <h2 className="mt-4 font-display text-4xl font-bold md:text-5xl">Competências profissionais</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Áreas de atuação
+            </p>
+            <h2 className="mt-4 font-display text-4xl font-bold md:text-5xl">
+              Competências profissionais
+            </h2>
             <div className="mt-12 grid gap-px overflow-hidden rounded-3xl bg-border md:grid-cols-2">
               {skills.map(([Icon, title, tools]) => (
                 <article key={title} className="bg-background p-8 md:p-10">
@@ -186,14 +221,7 @@ function AboutPage() {
                 </article>
               ))}
             </div>
-            <ul className="mt-12 grid gap-4 md:grid-cols-2">
-              {competencies.map((item) => (
-                <li key={item} className="flex gap-3 font-light leading-relaxed text-foreground/75">
-                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            
           </div>
         </section>
 
@@ -208,8 +236,9 @@ function AboutPage() {
               juntos?
             </h2>
             <p className="mt-7 max-w-2xl font-light leading-relaxed text-primary-foreground/75">
-              Acredito que é trabalhando que se constrói. Busco novas oportunidades, projetos e parcerias profissionais
-              que me permitam contribuir com meu conhecimento e ampliar meu olhar sobre a arquitetura.
+              Acredito que é trabalhando que se constrói. Busco novas oportunidades, projetos e
+              parcerias profissionais que me permitam contribuir com meu conhecimento e ampliar meu
+              olhar sobre a arquitetura.
             </p>
             <div className="mt-12 grid gap-8 md:grid-cols-3">
               <p className="flex items-start gap-3 text-sm text-primary-foreground/80">

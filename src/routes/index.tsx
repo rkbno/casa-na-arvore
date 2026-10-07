@@ -10,17 +10,309 @@ import plan from "@/assets/uploads/planta.jpeg.asset.json";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
-  head: () => ({ meta: [
-    { title: "Casa na Árvore — Arquitetura e bioconstrução" },
-    { name: "description", content: "Arquitetura autoral, bioclimática e conectada à natureza." },
-    { property: "og:title", content: "Casa na Árvore — Arquitetura e bioconstrução" },
-    { property: "og:description", content: "Projetos que equilibram identidade, conforto, custo e qualidade." },
-    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
-  ] }), component: HomePage,
+  head: () => ({
+    meta: [
+      { title: "Casa na Árvore — Arquitetura e bioconstrução" },
+      { name: "description", content: "Arquitetura autoral, bioclimática e conectada à natureza." },
+      { property: "og:title", content: "Casa na Árvore — Arquitetura e bioconstrução" },
+      {
+        property: "og:description",
+        content: "Projetos que equilibram identidade, conforto, custo e qualidade.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: HomePage,
 });
 
-const path = [["01","Sonho","Escuta atenta, repertório e desejos ganham direção."],["02","Projeto","Arquitetura autoral e soluções bioclimáticas tomam forma."],["03","Aprovação","Decisões técnicas equilibram custo, qualidade e bem-estar."],["04","Execução","Materiais e sistemas são acompanhados com cuidado."],["05","Finalização","A casa passa a guardar novas memórias."]] as const;
+const path = [
+  ["01", "Sonho", "Escuta atenta, repertório e desejos ganham direção."],
+  ["02", "Projeto", "Arquitetura autoral e soluções bioclimáticas tomam forma."],
+  ["03", "Aprovação", "Decisões técnicas equilibram custo, qualidade e bem-estar."],
+  ["04", "Execução", "Materiais e sistemas são acompanhados com cuidado."],
+  ["05", "Finalização", "A casa passa a guardar novas memórias."],
+] as const;
 
-const projects = [{ to: "/conceitos", title: "Conceitos construtivos", text: "Elementos que orientam o projeto" }, { to: "/capela", title: "Capela São José", text: "Terra, luz e vitrais de garrafa" }, { to: "/casa-tempo", title: "Casa Tempo", text: "Residência bioclimática" }] as const;
+const projects = [
+  { to: "/conceitos", title: "Conceitos construtivos", text: "Elementos que orientam o projeto" },
+  { to: "/capela", title: "Capela São José", text: "Terra, luz e vitrais de garrafa" },
+  { to: "/casa-tempo", title: "Casa Tempo", text: "Residência bioclimática" },
+] as const;
 
-function HomePage(){const [menuOpen,setMenuOpen]=useState(false);const [projectsOpen,setProjectsOpen]=useState(false);const projectsRef=useRef<HTMLDivElement>(null);useEffect(()=>{const h=(e:PointerEvent)=>{if(projectsRef.current&&!projectsRef.current.contains(e.target as Node))setProjectsOpen(false);};document.addEventListener("pointerdown",h);return()=>document.removeEventListener("pointerdown",h);},[]);return <div className="min-h-screen overflow-x-hidden bg-background text-foreground antialiased"><header className="fixed inset-x-0 top-0 z-50 px-4 py-4 md:px-8"><nav className="mx-auto flex max-w-7xl items-center justify-between"><a href="#topo" className="rounded-full border border-glass-border bg-glass-strong p-2 backdrop-blur-xl"><img src={logo.url} alt="Casa na Árvore Arquitetura" className="h-12 w-auto rounded-full"/></a><div className="hidden items-center gap-1 rounded-full border border-glass-border bg-glass px-2 py-1.5 backdrop-blur-xl md:flex"><Link to="/sobre" className="rounded-full px-4 py-2 text-sm font-medium">Sobre</Link><div className="relative" ref={projectsRef}><button type="button" aria-expanded={projectsOpen} aria-haspopup="true" onKeyDown={(e)=>{if(e.key==="Escape")setProjectsOpen(false)}} onClick={()=>setProjectsOpen(v=>!v)} className="flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium">Projetos<ChevronDown className={"size-3.5 transition-transform duration-300 "+(projectsOpen?"rotate-180":"")} /></button>{projectsOpen&&<div className="absolute left-1/2 top-full w-80 -translate-x-1/2 pt-3"><div className="overflow-hidden rounded-3xl border border-glass-border bg-background/95 p-2 shadow-2xl backdrop-blur-2xl">{projects.map(p=><Link key={p.to} to={p.to} onClick={()=>setProjectsOpen(false)} className="block rounded-2xl px-4 py-3 transition-colors hover:bg-primary/10"><span className="block text-sm font-semibold">{p.title}</span><span className="mt-1 block text-xs font-light text-foreground/70">{p.text}</span></Link>)}</div></div>}</div><Link to="/contato" className="rounded-full bg-pine px-5 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-foreground">Solicitar orçamento</Link></div><Button variant="glass" size="icon" className="md:hidden" aria-label="Abrir menu" onClick={()=>setMenuOpen(v=>!v)}><Menu className="size-5"/></Button></nav>{menuOpen&&<div className="mx-auto mt-2 flex max-w-7xl flex-col rounded-2xl border border-glass-border bg-glass-strong p-3 backdrop-blur-2xl md:hidden"><Link to="/sobre" onClick={()=>setMenuOpen(false)} className="px-4 py-3">Sobre</Link><span className="px-4 pb-1 pt-3 text-xs font-semibold uppercase tracking-[0.18em] text-foreground/65">Projetos</span><div className="ml-4 flex flex-col border-l border-glass-border pl-4">{projects.map(p=><Link key={p.to} to={p.to} onClick={()=>setMenuOpen(false)} className="py-2.5 text-sm font-medium text-foreground/80">{p.title}</Link>)}</div><Link to="/contato" className="px-4 py-3 font-semibold text-primary">Solicitar orçamento</Link></div>}</header><main><section id="topo" className="relative flex min-h-[94svh] items-end overflow-hidden"><img src={heroImage} alt="Casa contemporânea integrada à copa das árvores" className="absolute inset-0 size-full object-cover"/><div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/10 to-foreground/40"/><div className="relative z-10 w-full px-6 pb-12 pt-32 text-primary-foreground md:px-12 md:pb-16"><p className="mb-5 inline-flex items-center gap-2 rounded-full border border-glass-border bg-glass px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] backdrop-blur-xl"><Leaf className="size-3.5"/> Arquitetura · Bioconstrução</p><h1 className="max-w-5xl font-display text-5xl font-extrabold leading-[0.95] md:text-7xl lg:text-8xl">Espaços para<br/>criar raízes</h1><p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-primary-foreground/85">Projetos autorais e bioclimáticos que aproximam pessoas, paisagem e matéria.</p><a href="#essencia" aria-label="Conhecer nossa essência" className="absolute bottom-6 right-6 grid size-12 place-items-center rounded-full border border-glass-border bg-glass backdrop-blur-xl md:right-12"><ArrowDown className="size-5"/></a></div></section><section id="essencia" className="px-6 py-24 md:px-12 md:py-32"><div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2"><img src={detailImage} alt="Madeira e vidro em diálogo com a natureza" className="aspect-[4/3] w-full rounded-3xl object-cover"/><div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Nossa essência</p><h2 className="mt-4 font-display text-4xl font-bold leading-tight md:text-5xl">O sonho de criança se transforma em um sonho construído.</h2><p className="mt-6 font-light leading-relaxed text-foreground/70">A Casa na Árvore nasce do imaginário de criar um lugar entre a natureza e a imaginação — e cresce com a ideia de transformar sonhos em espaços reais, pensados para cada história e cada forma de viver.</p><p className="mt-4 font-light leading-relaxed text-foreground/70">Da imaginação à arquitetura.</p></div></div></section><section id="caminho" className="bg-pine px-6 py-24 text-primary-foreground md:px-12 md:py-32"><div className="mx-auto max-w-7xl"><p className="text-xs font-semibold uppercase tracking-[0.2em] text-clay">Do primeiro traço à obra</p><h2 className="mt-4 font-display text-5xl font-bold">Nosso caminho</h2><div className="mt-12 grid gap-px overflow-hidden rounded-3xl bg-primary-foreground/15 md:grid-cols-5">{path.map(([n,title,text])=><article key={n} className="min-h-72 bg-pine p-7"><span className="text-sm text-clay">{n}</span><h3 className="mt-14 font-display text-2xl font-bold">{title}</h3><p className="mt-4 text-sm font-light leading-relaxed text-primary-foreground/65">{text}</p></article>)}</div></div></section><section className="px-6 py-24 md:px-12 md:py-32"><div className="mx-auto max-w-7xl"><div className="mb-12 max-w-2xl"><p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Conheça o trabalho</p><h2 className="mt-4 font-display text-4xl font-bold md:text-5xl">Matéria, técnica e significado</h2></div><div className="grid gap-7 md:grid-cols-2"><Link to="/casa-tempo" className="group relative overflow-hidden rounded-3xl md:col-span-2"><img src={casaTempo} alt="Fachada da Casa Tempo" className="aspect-[16/7] w-full object-cover transition duration-700 group-hover:scale-[1.02]"/><div className="absolute inset-0 bg-gradient-to-t from-foreground/80 to-transparent"/><div className="absolute inset-x-0 bottom-0 p-8 text-primary-foreground"><p className="text-sm">Projeto residencial</p><h3 className="mt-2 flex items-end justify-between font-display text-3xl font-bold md:text-4xl">Casa Tempo <ArrowUpRight/></h3></div></Link><Link to="/conceitos" className="group relative overflow-hidden rounded-3xl"><img src={plan.url} alt="Planta humanizada de projeto residencial" className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-[1.02]"/><div className="absolute inset-0 bg-gradient-to-t from-foreground/80 to-transparent"/><div className="absolute inset-x-0 bottom-0 p-8 text-primary-foreground"><p className="text-sm">Elementos norteadores</p><h3 className="mt-2 flex items-end justify-between font-display text-3xl font-bold">Conceitos construtivos <ArrowUpRight/></h3></div></Link><Link to="/capela" className="group relative overflow-hidden rounded-3xl"><img src={chapel} alt="Fachada da Capela São José" className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-[1.02]"/><div className="absolute inset-0 bg-gradient-to-t from-foreground/80 to-transparent"/><div className="absolute inset-x-0 bottom-0 p-8 text-primary-foreground"><p className="text-sm">Projeto executado</p><h3 className="mt-2 flex items-end justify-between font-display text-3xl font-bold">Capela São José <ArrowUpRight/></h3></div></Link></div></div></section></main><footer className="bg-pine px-6 py-10 text-primary-foreground md:px-12"><div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[auto_1fr] md:items-center"><div className="flex w-full justify-center md:w-auto md:justify-start"><img src={logo.url} alt="Casa na Árvore Arquitetura" className="block h-auto w-44 max-w-full object-contain md:w-52"/></div><div className="flex min-w-0 flex-col items-start gap-4 md:items-end"><Link to="/casa-tempo" className="text-sm text-primary-foreground/70">Casa Tempo</Link><Link to="/sobre" className="text-sm text-primary-foreground/70">Sobre a projetista</Link><Link to="/contato" className="font-semibold text-clay">Solicitar orçamento</Link><span className="text-sm text-primary-foreground/55">Arquitetura autoral · Bioclimática · Consciente</span></div></div></footer></div>}
+function HomePage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(false);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const h = (e: PointerEvent) => {
+      if (projectsRef.current && !projectsRef.current.contains(e.target as Node))
+        setProjectsOpen(false);
+    };
+    document.addEventListener("pointerdown", h);
+    return () => document.removeEventListener("pointerdown", h);
+  }, []);
+  return (
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground antialiased">
+      <header className="fixed inset-x-0 top-0 z-50 px-4 py-4 md:px-8">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between">
+          <a
+            href="#topo"
+            className="rounded-full border border-glass-border bg-glass-strong p-2 backdrop-blur-xl"
+          >
+            <img
+              src={logo.url}
+              alt="Casa na Árvore Arquitetura"
+              className="h-12 w-auto rounded-full"
+            />
+          </a>
+          <div className="hidden items-center gap-1 rounded-full border border-glass-border bg-glass px-2 py-1.5 backdrop-blur-xl md:flex">
+            <Link to="/sobre" className="rounded-full px-4 py-2 text-sm font-medium">
+              Sobre
+            </Link>
+            <div className="relative" ref={projectsRef}>
+              <button
+                type="button"
+                aria-expanded={projectsOpen}
+                aria-haspopup="true"
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") setProjectsOpen(false);
+                }}
+                onClick={() => setProjectsOpen((v) => !v)}
+                className="flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium"
+              >
+                Projetos
+                <ChevronDown
+                  className={
+                    "size-3.5 transition-transform duration-300 " +
+                    (projectsOpen ? "rotate-180" : "")
+                  }
+                />
+              </button>
+              {projectsOpen && (
+                <div className="absolute left-1/2 top-full w-80 -translate-x-1/2 pt-3">
+                  <div className="overflow-hidden rounded-3xl border border-glass-border bg-background/95 p-2 shadow-2xl backdrop-blur-2xl">
+                    {projects.map((p) => (
+                      <Link
+                        key={p.to}
+                        to={p.to}
+                        onClick={() => setProjectsOpen(false)}
+                        className="block rounded-2xl px-4 py-3 transition-colors hover:bg-primary/10"
+                      >
+                        <span className="block text-sm font-semibold">{p.title}</span>
+                        <span className="mt-1 block text-xs font-light text-foreground/70">
+                          {p.text}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+            <Link
+              to="/contato"
+              className="rounded-full bg-pine px-5 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-foreground"
+            >
+              Solicitar orçamento
+            </Link>
+          </div>
+          <Button
+            variant="glass"
+            size="icon"
+            className="md:hidden"
+            aria-label="Abrir menu"
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <Menu className="size-5" />
+          </Button>
+        </nav>
+        {menuOpen && (
+          <div className="mx-auto mt-2 flex max-w-7xl flex-col rounded-2xl border border-glass-border bg-glass-strong p-3 backdrop-blur-2xl md:hidden">
+            <Link to="/sobre" onClick={() => setMenuOpen(false)} className="px-4 py-3">
+              Sobre
+            </Link>
+            <span className="px-4 pb-1 pt-3 text-xs font-semibold uppercase tracking-[0.18em] text-foreground/65">
+              Projetos
+            </span>
+            <div className="ml-4 flex flex-col border-l border-glass-border pl-4">
+              {projects.map((p) => (
+                <Link
+                  key={p.to}
+                  to={p.to}
+                  onClick={() => setMenuOpen(false)}
+                  className="py-2.5 text-sm font-medium text-foreground/80"
+                >
+                  {p.title}
+                </Link>
+              ))}
+            </div>
+            <Link to="/contato" className="px-4 py-3 font-semibold text-primary">
+              Solicitar orçamento
+            </Link>
+          </div>
+        )}
+      </header>
+      <main>
+        <section id="topo" className="relative flex min-h-[94svh] items-end overflow-hidden">
+          <img
+            src={heroImage}
+            alt="Casa contemporânea integrada à copa das árvores"
+            className="absolute inset-0 size-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/10 to-foreground/40" />
+          <div className="relative z-10 w-full px-6 pb-12 pt-32 text-primary-foreground md:px-12 md:pb-16">
+            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-glass-border bg-glass px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] backdrop-blur-xl">
+              <Leaf className="size-3.5" /> Arquitetura · Bioconstrução
+            </p>
+            <h1 className="max-w-5xl font-display text-5xl font-extrabold leading-[0.95] md:text-7xl lg:text-8xl">
+              Espaços para
+              <br />
+              criar raízes
+            </h1>
+            <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-primary-foreground/85">
+              Projetos autorais e bioclimáticos que aproximam pessoas, paisagem e matéria.
+            </p>
+            <a
+              href="#essencia"
+              aria-label="Conhecer nossa essência"
+              className="absolute bottom-6 right-6 grid size-12 place-items-center rounded-full border border-glass-border bg-glass backdrop-blur-xl md:right-12"
+            >
+              <ArrowDown className="size-5" />
+            </a>
+          </div>
+        </section>
+        <section id="essencia" className="px-6 py-24 md:px-12 md:py-32">
+          <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
+            <img
+              src={detailImage}
+              alt="Madeira e vidro em diálogo com a natureza"
+              className="aspect-[4/3] w-full rounded-3xl object-cover"
+            />
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Nossa essência
+              </p>
+              <h2 className="mt-4 font-display text-4xl font-bold leading-tight md:text-5xl">
+                O sonho de criança se transforma em um sonho construído.
+              </h2>
+              <p className="mt-6 font-light leading-relaxed text-foreground/70">
+                A Casa na Árvore nasce do imaginário de criar um lugar entre a natureza e a
+                imaginação — e cresce com a ideia de transformar sonhos em espaços reais, pensados
+                para cada história e cada forma de viver.
+              </p>
+              <p className="mt-4 font-light leading-relaxed text-foreground/70">
+                Da imaginação à arquitetura.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section
+          id="caminho"
+          className="bg-pine px-6 py-24 text-primary-foreground md:px-12 md:py-32"
+        >
+          <div className="mx-auto max-w-7xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-clay">
+              Do primeiro traço à obra
+            </p>
+            <h2 className="mt-4 font-display text-5xl font-bold">Nosso caminho</h2>
+            <div className="mt-12 grid gap-px overflow-hidden rounded-3xl bg-primary-foreground/15 md:grid-cols-5">
+              {path.map(([n, title, text]) => (
+                <article key={n} className="min-h-72 bg-pine p-7">
+                  <span className="text-sm text-clay">{n}</span>
+                  <h3 className="mt-14 font-display text-2xl font-bold">{title}</h3>
+                  <p className="mt-4 text-sm font-light leading-relaxed text-primary-foreground/65">
+                    {text}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="px-6 py-24 md:px-12 md:py-32">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-12 max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Conheça o trabalho
+              </p>
+              <h2 className="mt-4 font-display text-4xl font-bold md:text-5xl">
+                Matéria, técnica e significado
+              </h2>
+            </div>
+            <div className="grid gap-7 md:grid-cols-2">
+              <Link
+                to="/casa-tempo"
+                className="group relative overflow-hidden rounded-3xl md:col-span-2"
+              >
+                <img
+                  src={casaTempo}
+                  alt="Fachada da Casa Tempo"
+                  className="aspect-[16/7] w-full object-cover transition duration-700 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-8 text-primary-foreground">
+                  <p className="text-sm">Projeto residencial</p>
+                  <h3 className="mt-2 flex items-end justify-between font-display text-3xl font-bold md:text-4xl">
+                    Casa Tempo <ArrowUpRight />
+                  </h3>
+                </div>
+              </Link>
+              <Link to="/conceitos" className="group relative overflow-hidden rounded-3xl">
+                <img
+                  src={plan.url}
+                  alt="Planta humanizada de projeto residencial"
+                  className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-8 text-primary-foreground">
+                  <p className="text-sm">Elementos norteadores</p>
+                  <h3 className="mt-2 flex items-end justify-between font-display text-3xl font-bold">
+                    Conceitos construtivos <ArrowUpRight />
+                  </h3>
+                </div>
+              </Link>
+              <Link to="/capela" className="group relative overflow-hidden rounded-3xl">
+                <img
+                  src={chapel}
+                  alt="Fachada da Capela São José"
+                  className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-8 text-primary-foreground">
+                  <p className="text-sm">Projeto executado</p>
+                  <h3 className="mt-2 flex items-end justify-between font-display text-3xl font-bold">
+                    Capela São José <ArrowUpRight />
+                  </h3>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer className="bg-pine px-6 py-10 text-primary-foreground md:px-12">
+        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[auto_1fr] md:items-center">
+          <div className="flex w-full justify-center md:w-auto md:justify-start">
+            <img
+              src={logo.url}
+              alt="Casa na Árvore Arquitetura"
+              className="block h-auto w-44 max-w-full object-contain md:w-52"
+            />
+          </div>
+          <div className="flex min-w-0 flex-col items-start gap-4 md:items-end">
+            <Link to="/casa-tempo" className="text-sm text-primary-foreground/70">
+              Casa Tempo
+            </Link>
+            <Link to="/sobre" className="text-sm text-primary-foreground/70">
+              Sobre a projetista
+            </Link>
+            <Link to="/contato" className="font-semibold text-clay">
+              Solicitar orçamento
+            </Link>
+            <span className="text-sm text-primary-foreground/55">
+              Arquitetura autoral · Bioclimática · Consciente
+            </span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

@@ -259,7 +259,10 @@ function ContactPage() {
                   </Field>
                 </div>
 
-                <Field label="Conte um pouco mais (opcional)" error={form.formState.errors.details?.message}>
+                <Field
+                  label="Conte um pouco mais (opcional)"
+                  error={form.formState.errors.details?.message}
+                >
                   <Textarea
                     {...form.register("details")}
                     aria-label="Conte um pouco mais (opcional)"
@@ -271,7 +274,12 @@ function ContactPage() {
 
                 <div className="hidden" aria-hidden="true">
                   <Label htmlFor="website">Site</Label>
-                  <Input id="website" tabIndex={-1} autoComplete="off" {...form.register("website")} />
+                  <Input
+                    id="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    {...form.register("website")}
+                  />
                 </div>
 
                 {form.formState.errors.root?.message && (
@@ -280,7 +288,12 @@ function ContactPage() {
                   </p>
                 )}
 
-                <Button type="submit" size="lg" disabled={form.formState.isSubmitting} className="mt-2 w-full md:w-fit">
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={form.formState.isSubmitting}
+                  className="mt-2 w-full md:w-fit"
+                >
                   {form.formState.isSubmitting ? "Enviando..." : "Solicitar orçamento"}
                   {!form.formState.isSubmitting && <ArrowRight className="size-4" />}
                 </Button>
