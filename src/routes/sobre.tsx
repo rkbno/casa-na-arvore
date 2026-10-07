@@ -35,33 +35,6 @@ const timeline = [
       "Eu trabalhava de forma independente com desenho e pintura, e foi a partir desse trabalho que surgiu o convite para atuar como projetista. O que começou como arte acabou encontrando na arquitetura uma nova forma de expressão.",
     ],
   },
-  {
-    year: "2024",
-    title: "TDBIM Solutions",
-    place: "Flórida · EUA",
-    body: [
-      "Em 2024, iniciei minha atuação na TDBIM Solutions, empresa de engenharia sediada na Flórida, EUA, desenvolvendo projetos residenciais em BIM. Minha atuação envolve Revit, desenhos arquitetônicos, modelagem, estudos de layout, fachadas e representação, em projetos de diferentes escalas e padrões construtivos.",
-      "A experiência com o mercado norte-americano ampliou meu repertório em arquitetura residencial, processos construtivos e metodologia BIM.",
-    ],
-  },
-  {
-    year: "2025",
-    title: "Projetos autorais e graduação",
-    place: "Vila Velha · ES",
-    body: [
-      "Hoje, concilio minha atuação profissional na TDBIM Solutions com o desenvolvimento de projetos autorais e da minha identidade profissional.",
-      "Paralelamente à graduação em Arquitetura e Urbanismo, venho construindo meu portfólio e aprofundando minha experiência em projeto residencial, Revit, BIM e representação arquitetônica, preparando as bases para minha futura atuação como arquiteta.",
-    ],
-  },
-  {
-    year: "2026",
-    title: "Bioconstrução na prática",
-    place: "Escritório Conceito · Tijolo ecológico",
-    body: [
-      "Colaboração profissional com o Escritório Conceito, especializado em construção sustentável e no uso de tijolos ecológicos. Participo do desenvolvimento de um projeto, atuando na modelagem arquitetônica a partir de um modelo em SketchUp.",
-      "Esta experiência marca o início da minha atuação prática em uma área que venho estudando e na qual tenho grande interesse em desenvolver minha trajetória.",
-    ],
-  },
 ] as const;
 
 const skills = [
