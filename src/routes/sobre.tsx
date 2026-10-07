@@ -194,9 +194,6 @@ function AboutPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-12 text-sm font-semibold uppercase tracking-[0.18em] text-foreground/60">
-              Cursando Arquitetura e Urbanismo · 5º período · Faculdade Multivix
-            </p>
           </div>
         </section>
 
