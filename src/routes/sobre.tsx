@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Box, Building2, Compass, Layers, Mail, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/uploads/logo-completa.png.asset.json";
-import portrait from "@/assets/treehouse-loft.jpg";
+import floorPlan from "@/assets/uploads/planta.jpeg.asset.json";
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({
@@ -81,9 +81,9 @@ function AboutPage() {
               </p>
             </div>
             <img
-              src={portrait}
-              alt="Interior de madeira e vidro em diálogo com a copa das árvores"
-              className="aspect-[4/3] w-full rounded-3xl object-cover"
+              src={floorPlan.url}
+              alt="Planta baixa humanizada de um projeto residencial da Casa na Árvore"
+              className="aspect-[4/3] w-full rounded-lg bg-background object-contain p-3 md:p-5"
             />
           </div>
         </div>
