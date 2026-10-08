@@ -1,5 +1,10 @@
 # Roadmap
 
+- [ ] Investigate reported home-page repetition while scrolling.
+- [ ] Adapt the home presentation to the Urban Electric reference, preserving the chosen palette and content.
+- [ ] Replace the About photograph with the supplied project floor plan.
+- [ ] Verify the updated pages and scrolling.
+
 - [x] Incorporate the uploaded project copy and page structure into the new visual direction.
 - [x] Add the Concepts and Capela São José pages with route-specific metadata.
 - [x] Use the uploaded logo, floor plan, and real Capela São José photographs.
