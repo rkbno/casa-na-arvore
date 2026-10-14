@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solicite um orçamento — Casa na Árvore</title>
+  <meta name="description" content="Conte sobre seu projeto de arquitetura, localização e prazo desejado.">
+  <meta property="og:title" content="Solicite um orçamento — Casa na Árvore">
+  <meta property="og:description" content="Conte sobre seu projeto de arquitetura, localização e prazo desejado.">
+  <meta property="og:image" content="src/img/treehouse-hero.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=Newsreader:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<main>
+
+<section class="page-hero">
+  <div class="wrap">
+    <h1>Conte sobre seu projeto</h1>
+    <p>Compartilhe as informações iniciais. Elas ajudam a compreender o contexto e preparar uma primeira conversa mais produtiva. Cada projeto começa pela escuta.</p>
+  </div>
+</section>
+<section class="section" style="padding-top:24px">
+  <div class="wrap">
+    <form class="form" id="form-orcamento">
+      <label>Nome<input name="nome" required autocomplete="name"></label>
+      <label>E-mail<input name="email" type="email" required autocomplete="email"></label>
+      <label>Telefone (opcional)<input name="telefone" type="tel" autocomplete="tel"></label>
+      <label>Tipo de projeto
+        <select name="tipo" required>
+          <option value="">Selecione</option>
+          <option>Residência</option>
+          <option>Casa de campo</option>
+          <option>Interiores</option>
+          <option>Bioconstrução</option>
+          <option>Reforma ou ampliação</option>
+          <option>Outro</option>
+        </select>
+      </label>
+      <label>Localização<input name="local" required></label>
+      <label>Prazo desejado
+        <select name="prazo" required>
+          <option value="">Selecione</option>
+          <option>O quanto antes</option>
+          <option>Em até 3 meses</option>
+          <option>Em até 6 meses</option>
+          <option>Ainda sem prazo definido</option>
+        </select>
+      </label>
+      <label>Conte um pouco mais (opcional)<textarea name="mensagem"></textarea></label>
+      <label class="hp" aria-hidden="true">Site<input name="site" tabindex="-1" autocomplete="off"></label>
+      <button class="btn" type="submit">Solicitar orçamento</button>
+      <p class="form-status" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+<footer id="site-footer"></footer>
+<script src="src/js/components.js"></script>
+<script src="src/js/main.js"></script>
+</body>
+</html>
