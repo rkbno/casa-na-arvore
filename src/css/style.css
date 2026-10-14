@@ -182,3 +182,10 @@ main{padding-top:var(--header-h)}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* ---------- mapa ---------- */
+.mapa__grid{display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(28px,5vw,80px);align-items:center}
+.mapa__frame{width:100%;height:clamp(320px,45vw,480px);border:0;background:var(--stone);filter:grayscale(.35)}
+@media (max-width:960px){
+  .mapa__grid{grid-template-columns:1fr}
+}

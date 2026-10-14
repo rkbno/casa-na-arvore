@@ -18,9 +18,8 @@
 <main>
 
 <section class="hero" id="topo">
-  <video class="hero__img" autoplay muted loop playsinline preload="auto" poster="src/img/hero-poster.jpg" aria-hidden="true">
-  <source src="src/video/hero.mp4" type="video/mp4">
-</video>
+  <img class="hero__img" src="src/video/hero.webp" alt="Paisagem em movimento">
+
   <div class="hero__body">
     <h1>Casa na Árvore<br>Espaços para criar raízes</h1>
     <p>Projetos autorais e bioclimáticos que aproximam pessoas, paisagem e matéria.</p>
@@ -78,10 +77,27 @@
   <div class="wrap">
     <h2 class="center">Matéria, técnica e significado</h2>
     <div class="cards" style="margin-top:48px">
-      <a class="card" href="casa-tempo.html"><img src="src/img/fachada.jpg" alt="Fachada da Casa Tempo" loading="lazy"><div class="card__cap"><small>Projeto residencial</small><h3>Casa Tempo</h3></div></a>
+      <a class="card" href="casa-tempo.html"><img src="src/img/banheiro.jpg" alt="Fachada da Casa Tempo" loading="lazy"><div class="card__cap"><small>Projeto residencial</small><h3>Casa Tempo</h3></div></a>
       <a class="card" href="conceitos.html"><img src="src/img/planta.jpeg" alt="Planta humanizada de projeto residencial" loading="lazy"><div class="card__cap"><small>Elementos norteadores</small><h3>Conceitos construtivos</h3></div></a>
       <a class="card" href="capela.html"><img src="src/img/capela-fachada.jpg" alt="Fachada da Capela São José" loading="lazy"><div class="card__cap"><small>Projeto executado</small><h3>Capela São José</h3></div></a>
     </div>
+  </div>
+</section>
+
+<section class="section mapa" id="localizacao">
+  <div class="wrap mapa__grid">
+    <div>
+      <h2>Onde estamos</h2>
+      <p>Encontre a Casa na Árvore no Google Maps e trace sua rota até nós.</p>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=-14.4095262,-51.3168626" target="_blank" rel="noopener">Abrir no Google Maps</a>
+    </div>
+    <iframe
+      class="mapa__frame"
+      title="Localização da Casa na Árvore no Google Maps"
+      src="https://maps.google.com/maps?q=-14.4095262,-51.3168626&z=14&hl=pt-BR&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen></iframe>
   </div>
 </section>
 
