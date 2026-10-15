@@ -18,20 +18,20 @@
           ${projetos.map(p => `<a href="${p.href}"><img src="${p.img}" alt="" loading="lazy">${p.title}<span>${p.sub}</span></a>`).join("")}
         </div>
       </div>
-      <a href="loja.html"${page === "loja.html" ? ' aria-current="page"' : ""}>Loja</a>
+<!--    <a href="loja.html"${page === "loja.html" ? ' aria-current="page"' : ""}>Loja</a> -->
     </nav>
     <a class="brand" href="index.html" aria-label="Casa na Árvore Arquitetura — início">
       <img src="src/img/logo-completa.png" alt="">
       <span>Casa na Árvore<small>Arquitetura</small></span>
     </a>
     <nav class="nav nav--right" aria-label="Contato">
-      <a href="contato.html">Solicitar orçamento</a>
+     <a href="contato.html">Solicitar orçamento</a> 
     </nav>
   </div>
   <div class="drawer" id="drawer">
     <a href="sobre.html">Sobre</a>
     ${projetos.map(p => `<a href="${p.href}">${p.title}<small>${p.sub}</small></a>`).join("")}
-    <a href="loja.html">Loja</a>
+    <!-- <a href="loja.html">Loja</a> -->
     <a href="contato.html">Solicitar orçamento</a>
   </div>`;
 
@@ -51,7 +51,7 @@
       <div>
         <h4>Projetista</h4>
         <a href="sobre.html">Sobre Luisa Dalcin</a>
-        <a href="loja.html">Loja</a>
+      <!-- <a href="loja.html">Loja</a> -->
         <a href="contato.html">Solicitar orçamento</a>
       </div>
       <div>
