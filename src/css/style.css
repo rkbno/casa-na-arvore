@@ -200,3 +200,20 @@ main{padding-top:var(--header-h)}
 .produto .btn{margin-top:8px}
 @media (max-width:960px){.produtos{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.produtos{grid-template-columns:1fr}}
+
+/* ---------- trajetória ---------- */
+:root{--gold:#b08d4a}
+.trajetoria__grid{display:grid;grid-template-columns:5fr 6fr;gap:clamp(32px,6vw,96px);align-items:center}
+.trajetoria__media{position:relative;margin:0 0 28px 28px}
+.trajetoria__media::before{content:"";position:absolute;inset:28px -28px -28px 28px;background:var(--moss);z-index:0}
+.trajetoria__media img{position:relative;z-index:1;width:100%;aspect-ratio:838/897;object-fit:cover}
+.trajetoria__texto{border-top:1px solid var(--gold);padding-top:24px}
+.trajetoria__ano{text-align:right;color:var(--muted);margin-bottom:.4em}
+.trajetoria__texto h2{color:var(--moss);text-transform:uppercase;letter-spacing:.04em}
+.trajetoria__empresa{text-transform:uppercase;letter-spacing:.08em;font-size:.9rem;color:var(--muted);margin-bottom:1.6em}
+.trajetoria__local{border-top:1px solid var(--gold);padding-top:16px;margin-top:2em;color:var(--muted)}
+@media (max-width:960px){
+  .trajetoria__grid{grid-template-columns:1fr}
+  .trajetoria__media{margin:0 28px 28px 0}
+  .trajetoria__media::before{inset:28px -28px -28px 28px}
+}
